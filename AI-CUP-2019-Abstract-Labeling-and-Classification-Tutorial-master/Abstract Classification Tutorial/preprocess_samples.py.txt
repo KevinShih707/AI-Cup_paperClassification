@@ -1,0 +1,15 @@
+from tqdm import tqdm_notebook as tqdm
+
+def preprocess_samples(dataset, word_dict):
+    """ Worker function.
+
+    Args:
+        dataset (list of dict)
+    Returns:
+        list of processed dict.
+    """
+    processed = []
+    for sample in tqdm(dataset.iterrows(), total=len(dataset)):
+        processed.append(preprocess_sample(sample[1], word_dict))
+
+    return processed
